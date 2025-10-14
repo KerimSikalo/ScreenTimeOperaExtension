@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Screen Time</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      width: 360px;
+      padding: 0;
+      background: #f8f9fa;
+      color: #1a1a1a;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    body.dark-mode {
+      background: #1a1a1a;
+      color: #e8e8e8;
+    }
+    
+    .container {
+      padding: 20px;
+    }
+    
+    .header {
+      margin-bottom: 20px;
+    }
+    
+    h2 { 
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #2c3e50;
+    }
+    
+    .icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e8e8e8;
+    }
+    
+    .time { 
+      font-size: 44px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -1px;
+      color: #2c3e50;
+    }
+    
+    .small { 
+      color: #7f8c8d;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #2c3e50;
+    }
+    
+    .sites-wrapper {
+      max-height: 240px;
+      overflow-y: auto;
+      margin: -4px -4px 0 -4px;
+      padding: 4px;
+    }
+    
+    ul { 
+      list-style: none;
+      padding: 0;
+    }
+    
+    li { 
+      background: #f8f9fa;
+      padding: 12px 14px;
+      margin-bottom: 6px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.15s;
+      border: 1px solid transparent;
+    }
+    
+    li:hover {
+      background: #ecf0f1;
+      border-color: #d5d5d5;
+    }
+    
+    .site-name {
+      font-weight: 500;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #34495e;
+    }
+    
+    .site-time {
+      font-weight: 600;
+      margin-left: 12px;
+      color: #3498db;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    
+    button {
+      flex: 1;
+      padding: 11px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    
+    #resetBtn {
+      background: white;
+      color: #e74c3c;
+      border: 1.5px solid #e74c3c;
+    }
+    
+    #resetBtn:hover {
+      background: #e74c3c;
+      color: white;
+    }
+    
+    a {
+      flex: 1;
+      padding: 11px 18px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.15s;
+      display: block;
+    }
+    
+    a:hover {
+      background: #2980b9;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 20px;
+      color: #95a5a6;
+      font-size: 13px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #d5d5d5;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #bdc3c7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>
+        <img src="icons/icon48.png" alt="Screen Time" class="icon">
+        Screen Time
+      </h2>
+    </div>
+
+    <div class="card">
+      <div class="time" id="total">Loading…</div>
+      <div class="small">Active time today</div>
+    </div>
+
+    <div class="card">
+      <h3>By Website</h3>
+      <div class="sites-wrapper">
+        <ul id="sites"></ul>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="resetBtn">Reset Today</button>
+      <a href="options.html" target="_blank">Settings</a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
