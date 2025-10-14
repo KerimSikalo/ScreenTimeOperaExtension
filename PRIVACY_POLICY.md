@@ -1,0 +1,17 @@
+# Privacy Policy
+Privacy Policy for Screen Time Tracker
+
+Screen Time Tracker does not collect, share, or transmit any personal data.
+All time-tracking data is stored locally in the user's browser using Chrome/Opera storage APIs.
+No data is ever sent to external servers, nor is it shared with third parties.
+
+Collected Data:
+- The extension records only the amount of time spent on each website.
+- This information remains private and accessible only to the user.
+
+User Consent:
+By installing and using the Screen Time Tracker extension, you consent to local-only data storage.
+
+Contact:
+If you have questions or issues, please visit the support page:
+https://github.com/keroza/screentime-extension/issues
