@@ -14,4 +14,4 @@ By installing and using the Screen Time Tracker extension, you consent to local-
 
 Contact:
 If you have questions or issues, please visit the support page:
-https://github.com/keroza/screentime-extension/issues
+[https://github.com/keroza/screentime-extension/issues](https://github.com/KerimSikalo/ScreenTimeOperaExtension/issues)
