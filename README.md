@@ -14,4 +14,4 @@ A simple browser extension that helps you track how much time you spend on diffe
 
 ## Support
 Found a bug or have feedback?  
-👉 [Open an issue here](https://github.com/keroza/screentime-extension/issues)
+👉 [Open an issue here](https://github.com/KerimSikalo/ScreenTimeOperaExtension/issues)
