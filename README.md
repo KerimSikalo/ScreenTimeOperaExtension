@@ -2,18 +2,25 @@
 
 A lightweight browser extension that tracks your active browsing time across different websites. Get insights into your web habits with automatic idle detection and local data storage.
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.2.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Chrome Extension](https://img.shields.io/badge/Opera-Extension-red)
 
+## Available on Opera Add-ons
+
+You can install the extension directly from the official Opera Add-ons store:
+
+👉 **Download from Opera Add-ons:**
+[https://addons.opera.com/en/extensions/details/screen-time-tracker-2/](https://addons.opera.com/en/extensions/details/screen-time-tracker-2/)
+
 ## Features
 
-- **Real-time Tracking** – Monitors active time on each website with per-second precision
-- **Smart Idle Detection** – Automatically pauses tracking when you're inactive (customizable threshold)
-- **100% Local Storage** – All data stays on your device using browser storage APIs—no servers, no external tracking
-- **Daily Statistics** – View total browsing time and breakdown by website
-- **Customizable Settings** – Adjust idle detection sensitivity to fit your workflow
-- **Minimal Footprint** – Lightweight background service worker that runs efficiently in the background
+* **Real-time Tracking** – Monitors active time on each website with per-second precision
+* **Smart Idle Detection** – Automatically pauses tracking when you're inactive (customizable threshold)
+* **100% Local Storage** – All data stays on your device using browser storage APIs—no servers, no external tracking
+* **Daily Statistics** – View total browsing time and breakdown by website
+* **Customizable Settings** – Adjust idle detection sensitivity to fit your workflow
+* **Minimal Footprint** – Lightweight background service worker that runs efficiently in the background
 
 ## How It Works
 
@@ -28,12 +35,14 @@ A lightweight browser extension that tracks your active browsing time across dif
 ### For Opera Browser
 
 1. Clone or download this repository:
+
    ```bash
    git clone https://github.com/KerimSikalo/ScreenTimeOperaExtension.git
    ```
 
 2. Open Opera and navigate to extensions:
-   - Type `opera://extensions` in the address bar or go to Menu → Extensions → Manage Extensions
+
+   * Type `opera://extensions` in the address bar or go to Menu → Extensions → Manage Extensions
 
 3. Enable **Developer Mode** (toggle in the top right corner)
 
@@ -44,27 +53,31 @@ A lightweight browser extension that tracks your active browsing time across dif
 ### For Chrome-based Browsers
 
 The same process works for Chromium-based browsers:
-- Chrome: `chrome://extensions`
-- Edge: `edge://extensions`
-- Brave: `brave://extensions`
+
+* Chrome: `chrome://extensions`
+* Edge: `edge://extensions`
+* Brave: `brave://extensions`
 
 ## Usage
 
 ### Popup View
 
 Click the extension icon to see:
-- **Total active time today** displayed prominently
-- **List of websites** ranked by time spent (top 20)
-- **Reset button** to clear today's data
-- **Settings link** to customize behavior
+
+* **Total active time today** displayed prominently
+* **List of websites** ranked by time spent (top 20)
+* **Reset button** to clear today's data
+* **Settings link** to customize behavior
 
 ### Settings
 
 Access extension options to configure:
-- **Idle Threshold** – How long (in seconds) before the extension considers you inactive
-  - Minimum: 5 seconds
-  - Default: 60 seconds
-  - Adjust based on your browsing habits
+
+* **Idle Threshold** – How long (in seconds) before the extension considers you inactive
+
+  * Minimum: 5 seconds
+  * Default: 60 seconds
+  * Adjust based on your browsing habits
 
 ## Project Structure
 
@@ -87,31 +100,32 @@ ScreenTimeOperaExtension/
 
 ### Background Service Worker (background.js)
 
-- Receives "ping" messages from active content scripts
-- Aggregates time per hostname and per day
-- Manages local storage with the schema: `{ daily: { "YYYY-MM-DD": { total: seconds, bySite: { hostname: seconds } } } }`
-- Auto-prunes data older than 60 days
+* Receives "ping" messages from active content scripts
+* Aggregates time per hostname and per day
+* Manages local storage with the schema: `{ daily: { "YYYY-MM-DD": { total: seconds, bySite: { hostname: seconds } } } }`
+* Auto-prunes data older than 60 days
 
 ### Content Script (content_script.js)
 
-- Injected into every page
-- Monitors user activity (mouse, keyboard, focus, scroll)
-- Sends 1-second pings to the background service when active
-- Gracefully handles extension context invalidation
+* Injected into every page
+* Monitors user activity (mouse, keyboard, focus, scroll)
+* Sends 1-second pings to the background service when active
+* Gracefully handles extension context invalidation
 
 ### Popup (popup.html & popup.js)
 
-- Displays today's statistics
-- Shows top 20 websites by time
-- Provides quick access to reset and settings
+* Displays today's statistics
+* Shows top 20 websites by time
+* Provides quick access to reset and settings
 
 ## Privacy & Security
 
 Your data is yours alone:
-- Zero external servers or API calls
-- No analytics or tracking by third parties
-- Data stored exclusively in Chrome/Opera local storage
-- Full source code transparency
+
+* Zero external servers or API calls
+* No analytics or tracking by third parties
+* Data stored exclusively in Chrome/Opera local storage
+* Full source code transparency
 
 See PRIVACY_POLICY.md for details.
 
@@ -119,56 +133,57 @@ See PRIVACY_POLICY.md for details.
 
 The extension requests these permissions:
 
-- `storage` – To save and retrieve browsing statistics
-- `tabs` – To access tab information
-- `alarms` – To schedule periodic data cleanup
-- `scripting` – To inject content scripts into pages
-- `activeTab` – To work with the currently active tab
-- `<all_urls>` – To track time on any website
+* `storage` – To save and retrieve browsing statistics
+* `tabs` – To access tab information
+* `alarms` – To schedule periodic data cleanup
+* `scripting` – To inject content scripts into pages
+* `activeTab` – To work with the currently active tab
+* `<all_urls>` – To track time on any website
 
 All permissions are used only for local tracking and data management.
 
 ## Performance
 
-- **Lightweight** – Uses a service worker instead of a persistent background page
-- **Efficient pinging** – One message per second per active tab
-- **Smart idle detection** – Stops pinging automatically during inactivity
-- **Automatic cleanup** – Removes old data to prevent storage bloat
-- **Error handling** – Gracefully handles extension reloads and edge cases
+* **Lightweight** – Uses a service worker instead of a persistent background page
+* **Efficient pinging** – One message per second per active tab
+* **Smart idle detection** – Stops pinging automatically during inactivity
+* **Automatic cleanup** – Removes old data to prevent storage bloat
+* **Error handling** – Gracefully handles extension reloads and edge cases
 
 ## Roadmap & Future Features
 
 Potential enhancements for future versions:
-- Weekly/monthly statistics and charts
-- Dark mode UI
-- Customizable time goals and alerts
-- Data export (CSV/JSON)
-- Notifications for excessive usage
-- Sync across devices (with privacy controls)
+
+* Weekly/monthly statistics and charts
+* Dark mode UI
+* Customizable time goals and alerts
+* Data export (CSV/JSON)
+* Notifications for excessive usage
+* Sync across devices (with privacy controls)
 
 ## Troubleshooting
 
 ### Extension stops tracking
 
-- Ensure the extension is enabled in `opera://extensions`
-- Check if the tab has focus (extension pauses when tab is in background)
-- Verify idle threshold isn't too low in Settings
+* Ensure the extension is enabled in `opera://extensions`
+* Check if the tab has focus (extension pauses when tab is in background)
+* Verify idle threshold isn't too low in Settings
 
 ### Data not showing
 
-- Refresh the popup (close and reopen)
-- Check browser console for errors (F12 → Console)
-- Verify local storage isn't disabled in browser settings
+* Refresh the popup (close and reopen)
+* Check browser console for errors (F12 → Console)
+* Verify local storage isn't disabled in browser settings
 
 ### High memory usage
 
-- This is rare with a service worker, but check for background tab issues
-- Try resetting today's data from the popup
+* This is rare with a service worker, but check for background tab issues
+* Try resetting today's data from the popup
 
 ## Contributing
 
 Found a bug or have a feature request? Please open an issue:
-https://github.com/KerimSikalo/ScreenTimeOperaExtension/issues
+[https://github.com/KerimSikalo/ScreenTimeOperaExtension/issues](https://github.com/KerimSikalo/ScreenTimeOperaExtension/issues)
 
 ## License
 
